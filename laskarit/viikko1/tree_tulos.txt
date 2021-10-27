@@ -1,1 +1,15 @@
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH6UP56VVjA1IuuW0MIHuEB0iH0qWfvgLWXNl2ELs4xH nikolai.paukkonen@gmail.com
+kurssit/
+└── ot2021
+    └── viikko1
+        └── unicafe
+            ├── poetry.lock
+            ├── pyproject.toml
+            └── src
+                ├── index.py
+                ├── kassapaate.py
+                ├── maksukortti.py
+                └── tests
+                    ├── __init__.py
+                    └── maksukortti_test.py
+
+5 directories, 7 files
