@@ -1,0 +1,35 @@
+# Vaatimusmäärittely
+
+## Sovelluksen tarkoitus
+
+Sovellusta käytetään arkeologisen stratigrafian (eli maakerrosten ja muiden materiaalisten ilmiöiden)  määrämuotoiseen dokumentointiin ja tallentamiseen tietokantaan. Yksittäisen stratigrafisen yksikön lisäksi sovellukseen toteutetaan mahdollisuus tallentaa stratigrafisia suhteita (vieressä - alla - päällä - leikkaus - jne.) ja luoda jonkinlainen visuaalinen havainnollistus kokonaisuudesta. Sovelluksessa on mahdollista luoda erillisiä projekteja, jotka toimivat käytännössä kuin erilliset käyttäjät ja joissa kussakin on oma stratigrafiansa.
+
+## Projektit
+Lähtökohtaisesti kaikki projektit ovat samanlaisia ja niistä löytyy samat toiminnallisuudet. Projektin ollessa auki myös aiempien merkintöjen muuttamisen tai poistamisen pitää olla mahdollista. 
+
+## Käyttöliittymä
+Alkuvaiheessa sovellus koostuu kolmesta näkymästä:
+* Luo uusi projekti / Avaa projekti
+* Lisää tai muokkaa stratigrafista yksikköä (alasvetovalikoilla)
+* Tarkastele projektia (tekstimuotoinen listaus / stratigrafinen piirros tai matriisi)
+
+## Perusversion tarjoama toiminnallisuus
+
+### Projektin luominen ja muokkaaminen
+* Luo uusi projekti, avaa projekti, poista projekti
+* Lisää projektiin yksikkö (maa/rakenne/leikkaus, juokseva numero, maaperän kuvaus, väri, minkä alla, minkä päällä jne.)
+* Muokkaa yksikköä
+* Poista yksikkö
+
+### Projektin vienti ja tarkastelu
+* Projektin stratigrafisten yksiköiden tietojen listaaminen
+* Visualisointi
+* Vieminen ulos tulosteena (txt, xls tai vastaava)
+
+## Jatkokehitysideoita
+Toiminnallisuutta voidaan laajentaa graafisen käyttöliittymän monimutkaistamisella ja erilaisten ulkopuolisten kirjastojen käytöllä. 
+* GIS-integraatio (maayksiköiden sitominen kartta-aineistoihin)
+* Monimutkaisempi export
+* Stratigrafisten ristiriitojen ja mahdottomuuksien huomiointi
+* Näyte- ja löytötietokantojen yhteensovittaminen
+* Pakolliset ja vapaaehtoiset tietokentät
