@@ -3,6 +3,8 @@
 
 Tämä sovellus on tarkoitettu arkeologisen stratigrafisen aineiston hallinnointiin sekä sen yhdistämiseen mm. löytö- ja näytetietoihin. Sovelluksella voidaan luoda useita erillisiä projekteja, jotka ovat itsenäisiä suhteessa toisiinsa.
 
+Kurssin laskuharjoitukset ovat [erillisessä kansiossa](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/laskarit/laskarit_readme.md).
+
 ## Python-versio
 Ohjelma on kehitetty Pythonin versiolla 3.8.10.
 
