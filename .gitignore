@@ -10,4 +10,4 @@ harjoitustyo/src/tests/__pycache__/
 harjoitustyo/src/tests/.pytest_cache/
 harjoitustyo/src/.pytest_cache
 harjoitustyo/htmlcov/
-
+harjoitustyo/.coverage
