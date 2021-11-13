@@ -4,7 +4,7 @@
 Tämä sovellus on tarkoitettu arkeologisen stratigrafisen aineiston hallinnointiin sekä sen yhdistämiseen mm. löytö- ja näytetietoihin. Sovelluksella voidaan luoda useita erillisiä projekteja, jotka ovat itsenäisiä suhteessa toisiinsa.
 
 ## Python-versio
-
+Ohjelma on kehitetty Pythonin versiolla 3.8.10.
 
 ## Dokumentaatio
 * Käyttöohje
