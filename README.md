@@ -1,13 +1,25 @@
-# Ohjelmistotekniikka 2021
+# Stratigraphy Database Manager
+### Ohjelmistotekniikka 2021
 
-Tähän repositorioon tulevat kaikki kurssin tehtävät ja projektit.
+Tämä sovellus on tarkoitettu arkeologisen stratigrafisen aineiston hallinnointiin sekä sen yhdistämiseen mm. löytö- ja näytetietoihin. Sovelluksella voidaan luoda useita erillisiä projekteja, jotka ovat itsenäisiä suhteessa toisiinsa.
 
-## Viikko 1
-* [Git_log](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/laskarit/viikko1/git_log_tulos.txt)
-* [Tree](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/laskarit/viikko1/tree_tulos.txt)
+## Python-versio
 
-## Viikko 2
-* [Maksukortti](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/tree/main/laskarit/viikko2/maksukortti)
-* [Unicafe](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/tree/main/laskarit/viikko2/unicafe)
+
+## Dokumentaatio
+* Käyttöohje
 * [Vaatimusmäärittely](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/harjoitustyo/dokumentaatio/vaatimusmaarittely.md)
-* [Coverage screenshot](https://raw.githubusercontent.com/nikolaipaukkonen/ot_harjoitustyo-2021/main/laskarit/viikko2/vko2_coverage_report.png)
+* Arkkitehtuurikuvaus
+* Testausdokumentti
+* [Työaikakirjanpito](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/harjoitustyo/dokumentaatio/tuntikirjanpito.md)
+
+## Asennus
+1. Asenna ensin riippuvuudet:
+´´´ṕoetry install´´´
+
+2. Suorita alustus:
+´´´ṕoetry run invoke build´´´
+
+3. Käynnistä sovelluksen graafinen käyttöliittymä:
+´´´poetry run invoke start´´´
+
