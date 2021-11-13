@@ -15,11 +15,11 @@ Tämä sovellus on tarkoitettu arkeologisen stratigrafisen aineiston hallinnoint
 
 ## Asennus
 1. Asenna ensin riippuvuudet:
-´´´ṕoetry install´´´
+```ṕoetry install```
 
 2. Suorita alustus:
-´´´ṕoetry run invoke build´´´
+```ṕoetry run invoke build```
 
 3. Käynnistä sovelluksen graafinen käyttöliittymä:
-´´´poetry run invoke start´´´
+```poetry run invoke start```
 
