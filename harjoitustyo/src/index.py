@@ -1,14 +1,7 @@
-from tkinter import tk
-from ui.ui import UI
+from gui import start
 
 def main():
-    window = Tk()
-    window.title('Stratigraphy Database Manager')
-
-    ui = UI(window)
-    ui.start()
-
-    window.mainloop()
+    start()
 
 if __name__ == '__main__':
     main()
