@@ -1,13 +1,63 @@
-# Ohjelmistotekniikka 2021
+# Stratigraphy Database Manager
+### Ohjelmistotekniikka 2021
 
-Tähän repositorioon tulevat kaikki kurssin tehtävät ja projektit.
+Tämä sovellus on tarkoitettu arkeologisen stratigrafisen aineiston hallinnointiin sekä sen yhdistämiseen mm. löytö- ja näytetietoihin. Sovelluksella voidaan luoda useita erillisiä projekteja, jotka ovat itsenäisiä suhteessa toisiinsa.
 
-## Viikko 1
-* [Git_log](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/laskarit/viikko1/git_log_tulos.txt)
-* [Tree](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/laskarit/viikko1/tree_tulos.txt)
+Kurssin laskuharjoitukset ovat [erillisessä kansiossa](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/laskarit/laskarit_readme.md).
 
-## Viikko 2
-* [Maksukortti](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/tree/main/laskarit/viikko2/maksukortti)
-* [Unicafe](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/tree/main/laskarit/viikko2/unicafe)
+## Python-versio
+Ohjelma on kehitetty Pythonin versiolla 3.8.10.
+
+## Dokumentaatio
+* Käyttöohje
 * [Vaatimusmäärittely](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/harjoitustyo/dokumentaatio/vaatimusmaarittely.md)
-* [Coverage screenshot](https://raw.githubusercontent.com/nikolaipaukkonen/ot_harjoitustyo-2021/main/laskarit/viikko2/vko2_coverage_report.png)
+* Arkkitehtuurikuvaus
+* Testausdokumentti
+* [Työaikakirjanpito](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/harjoitustyo/dokumentaatio/tuntikirjanpito.md)
+
+## Asennus
+1. Asenna ensin riippuvuudet:
+```bash
+ṕoetry install
+```
+
+2. Käynnistä sovelluksen graafinen käyttöliittymä:
+```bash
+poetry run invoke start
+```
+
+## Komentorivitoiminnot
+
+### Ohjelman suorittaminen
+
+Ohjelman pystyy suorittamaan komennolla:
+
+```bash
+poetry run invoke start
+```
+
+### Testaus
+
+Testit suoritetaan komennolla:
+
+```bash
+poetry run invoke test
+```
+
+### Testikattavuus
+
+Testikattavuusraportin voi generoida komennolla:
+
+```bash
+poetry run invoke coverage-report
+```
+
+Raportti generoituu _htmlcov_-hakemistoon.
+
+### Pylint
+
+Tiedoston [.pylintrc](./.pylintrc) määrittelemät tarkistukset voi suorittaa komennolla:
+
+```bash
+poetry run invoke lint
+```
