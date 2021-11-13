@@ -1,4 +1,5 @@
 import unittest
+import os
 from locus_database import check_db
 from pathlib import Path
 
@@ -10,3 +11,4 @@ class TestLocus_database(unittest.TestCase):
         check_db(self.db_name)
         path = Path(f'./{self.db_name}')
         assert path.is_file()
+        os.remove(path)
