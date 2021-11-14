@@ -5,4 +5,5 @@
 | 28.10. | 1		 | Määrittelydokumentin luonnostelua |
 | 11.11. | 3		 | Työn alustus ja alun graafinen käyttöliittymä |
 | 13.11. | 2		 | Invoke ja ekat testit |
-| Yht.   | 1		 |  | 
+| 14.11. | 3		 | Usean ikkunan näkymä |
+| Yht.   | 9		 |  | 

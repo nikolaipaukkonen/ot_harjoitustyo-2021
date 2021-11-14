@@ -1,7 +1,7 @@
 import unittest
 import os
-from locus_database import check_db
 from pathlib import Path
+from locus_database import check_db, create_locus
 
 class TestLocus_database(unittest.TestCase):
     def setUp(self):
@@ -12,3 +12,8 @@ class TestLocus_database(unittest.TestCase):
         path = Path(f'./{self.db_name}')
         assert path.is_file()
         os.remove(path)
+
+    def test_create_locus(self):
+        check_db(self.db_name)
+        create_locus("surface", "packed turf", 15, "-", "-", self.db_name)
+        #wip

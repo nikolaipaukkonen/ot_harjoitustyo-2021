@@ -1,4 +1,4 @@
-from gui import start
+from gui.gui import start
 
 def main():
     start()
