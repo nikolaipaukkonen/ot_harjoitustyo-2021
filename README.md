@@ -58,7 +58,7 @@ Raportti generoituu _htmlcov_-hakemistoon.
 
 Pylint-tarkistukset voi suorittaa komennolla:
 
-``bash
+```bash
 poetry run invoke lint
 ``` 
 
