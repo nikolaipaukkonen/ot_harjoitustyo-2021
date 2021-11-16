@@ -18,19 +18,17 @@ class IntroView:
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         label = ttk.Label(
-            master=self._root,
+            master=self._frame,
             text="Create or open existing stratigraphical \
 database")
-        self._entry = ttk.Entry(master=self._root)
+        self._entry = ttk.Entry(master=self._frame)
         button = ttk.Button(
-            master=self._root,
+            master=self._frame,
             text="Create / Open",
             command=lambda:[
                 self._open_database_button_click(),
-                self._handle_main(),
-                self.destroy()]
+                self._handle_main()]
         )
-
 
         label.pack()
         self._entry.pack()

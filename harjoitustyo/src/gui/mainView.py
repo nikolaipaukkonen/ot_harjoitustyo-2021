@@ -21,7 +21,7 @@ class MainView:
         add_locus_button = ttk.Button(
             master=self._frame,
             text="Add locus",
-            #command=self._handle_add_locus
+            #command=self._frame.destroy()
         )
 
         add_find_button = ttk.Button(

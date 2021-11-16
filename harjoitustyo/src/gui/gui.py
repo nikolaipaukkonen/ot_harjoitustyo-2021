@@ -7,7 +7,7 @@ class UI:
         self._root = root
         self._current_view = None
 
-    def start(self):
+    def start_gui(self):
         self._show_intro_view()
 
     def _hide_current_view(self):
@@ -42,11 +42,3 @@ class UI:
 
         self._current_view.pack()
 
-
-window = Tk()
-window.title('Stratigraphy Database Manager')
-
-ui = UI(window)
-ui.start()
-
-window.mainloop()
