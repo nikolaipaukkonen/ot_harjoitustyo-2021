@@ -6,6 +6,7 @@ class IntroView:
         self._root = root
         self._handle_main = handle_main
         self._frame = None
+        self._db_name = None
 
         self._initialize()
 
@@ -37,8 +38,8 @@ database")
     def _open_database_button_click(self):
         entry_value = self._entry.get()
         if entry_value != "":
-            db_name = entry_value + ".db"
-            check_db(db_name)
+            self._db_name = entry_value + ".db"
+            check_db(self._db_name)
         else:
             print("Database name can't be left empty")
         

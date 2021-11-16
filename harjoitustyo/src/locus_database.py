@@ -1,7 +1,8 @@
 import sqlite3
 from locus import Locus
 
-
+db = None
+c = None
 
 def check_db(db_name):
     db = sqlite3.connect(str(db_name))
@@ -36,15 +37,12 @@ def check_db(db_name):
         print(f"Database {db_name} exists. Opening...")
 
 
-def create_locus(name, descr, thick, above, below, db_name):
-    db = sqlite3.connect(str(db_name))
-    db.isolation_level = None
-    c = db.cursor()
+def create_locus(loc):
 
     try:
         c.execute("INSERT INTO Locus (\
         name, descr, thickness, above, below) \
-        VALUES(?,?,?,?,?)")
+        VALUES(?,?,?,?,?)", loc)
 
     except:
         print("Virheellinen syöte")
