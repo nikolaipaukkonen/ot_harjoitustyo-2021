@@ -8,4 +8,5 @@
 | 14.11. | 3		 | Usean ikkunan näkymä |
 | 15.11. | 2		 | Usean ikkunan näkymä |
 | 16.11. | 3		 | Gui-asioita ja add locus |
-| Yht.   | 14		 |  | 
+| 18.11. | 2		 | Tapahtumakäsittelijöiden rikkomista mainView.py:ssä |
+| Yht.   | 16		 |  | 
