@@ -9,12 +9,12 @@ class MainView:
     def __init__(self,root,handle_intro):
         self._root = root
         self._handle_intro = handle_intro
+        self._name_entry = None
+        self._type_entry = None
         self._frame = None
 
-        #self.type_v = tk.StringVar()
-        #self.type_v.set("Select locus type")
-        #self.name_v = tk.StringVar()
-        #self.thick_v = tk.StringVar()
+        self.type_v = tk.StringVar(self._root)
+        self.thick_v = tk.StringVar(self._root)
         
         self._initialize()
 
@@ -24,31 +24,39 @@ class MainView:
     def destroy(self):
         self._frame.destroy()
  
-    #def add_locus(self):
-    #   locus = Locus(
-    #                self.type_v.get,
-    #               self.name_v.get,
-    #               "placeholder",
-    #               self.thick_v.get,
-    #               0,
-    #               0
-    #           )
+    def add_locus(self):
+        print("Add locus button pressed")
+        type_value = self.type_v.get()
+        name_value = self._name_entry.get()
 
-    #    create_locus(locus)
+        create_locus(
+                type_value,
+                name_value,
+                "placeholder",
+                13,
+                0,
+                0)
     
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         label = ttk.Label(master=self._frame, text="Select action")
 
-        #type_entry = ttk.OptionMenu(self._frame, self.type_v, *TYPES)
-        #name_entry = ttk.Entry(self._frame, self.name_v)
-        #name_entry.insert(0, "Enter locus name")
-        #thick_entry = ttk.Entry(self._frame, self.thick_v)
+        
+        self._type_entry = ttk.OptionMenu(self._frame,self.type_v, TYPES[1],*TYPES)
+
+        self._name_entry = ttk.Entry(master=self._frame)
+        self._name_entry.insert(0, "Enter locus name")
+        thick_entry = ttk.Spinbox(
+                        self._frame, 
+                        from_=0, 
+                        to=200, 
+                        textvariable=self.thick_v
+                        )
 
         add_locus_button = ttk.Button(
             master=self._frame,
             text="Add locus",
-            #command=self.add_locus()
+            command=self.add_locus()
         )
 
         add_find_button = ttk.Button(
@@ -70,9 +78,9 @@ class MainView:
         )
 
         label.pack()
-        #type_entry.pack()
-        #name_entry.pack()
-        #thick_entry.pack()
+        self._type_entry.pack()
+        self._name_entry.pack()
+        thick_entry.pack()
         add_locus_button.pack()
         add_find_button.pack()
         add_sample_button.pack()

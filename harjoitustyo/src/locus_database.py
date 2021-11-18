@@ -15,6 +15,7 @@ def check_db(db_name):
     try:
         c.execute("CREATE TABLE Locus \
                 (id INTEGER PRIMARY KEY, \
+                type TEXT, \
                 name TEXT UNIQUE, \
                 descr TEXT, \
                 thickness INTEGER, \
@@ -37,12 +38,14 @@ def check_db(db_name):
         print(f"Database {db_name} exists. Opening...")
 
 
-def create_locus(loc):
-
+def create_locus(type, name, descr, thick, above, below):
+    print("DEBUG Inputting", type, name, descr, thick, above, below)
     try:
-        c.execute("INSERT INTO Locus (\
-        name, descr, thickness, above, below) \
-        VALUES(?,?,?,?,?)", loc)
+        c.execute(f"INSERT INTO Locus (\
+        type, name, descr, thickness, above, below) \
+        VALUES({type},{name},{descr},{thick},{above},{below})")
+
+        print(f"Locus {name} added to database")
 
     except:
-        print("Virheellinen syöte")
+        print("Incorrect input")
