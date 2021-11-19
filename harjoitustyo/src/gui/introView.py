@@ -1,6 +1,8 @@
 from tkinter import ttk, constants
 from locus_database import check_db
 
+#aloitusnäkymä, jossa avataan tai luodaan käytettävä tietokanta
+
 class IntroView:
     def __init__(self, root, handle_main):
         self._root = root
@@ -18,10 +20,12 @@ class IntroView:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
+
         label = ttk.Label(
             master=self._frame,
-            text="Create or open existing stratigraphical \
-database")
+            text="Create or open existing stratigraphical database")
+
+        #tietokannan luominen/avaaminen
         self._entry = ttk.Entry(master=self._frame)
         button = ttk.Button(
             master=self._frame,
@@ -37,6 +41,7 @@ database")
 
     def _open_database_button_click(self):
         entry_value = self._entry.get()
+
         if entry_value != "":
             self._db_name = entry_value + ".db"
             check_db(self._db_name)

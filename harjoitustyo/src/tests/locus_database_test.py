@@ -17,3 +17,10 @@ class TestLocus_database(unittest.TestCase):
         check_db(self.db_name)
         create_locus("surface", "packed turf", 15, "-", "-", self.db_name)
         #wip
+
+    def test_read_db_name(self):
+        f = open("db_list", "w+")
+        check_db(self.db_name)
+        db_name_from_file = f.readline()
+        self.assertEqual(self.db_name, db_name_from_file)
+        os.remove("db_list")
