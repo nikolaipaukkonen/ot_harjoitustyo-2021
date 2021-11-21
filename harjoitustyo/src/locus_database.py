@@ -25,7 +25,10 @@ def check_db(db_name):
         c.execute(
             "CREATE TABLE Finds \
                 (id INTEGER PRIMARY KEY, \
-                find_type TEXT UNIQUE, \
+                find_type TEXT, \
+                dating TEXT, \
+                descr, TEXT, \
+                weight INTEGER, \
                 locus INTEGER REFERENCES Locus)")
         c.execute(
             "CREATE TABLE Samples \
@@ -44,17 +47,12 @@ def read_db_name():
     return db_name
 
 def create_locus(type, name, descr, thick, above, below):
-    
     db_name = read_db_name()
-    print("db_lististä luettu", db_name)
 
     db = sqlite3.connect(str(db_name))
     db.isolation_level = None
     c = db.cursor()
 
-    print("DEBUG create_locus activated")
-    print(name)
-    print("DEBUG Inputting", type, name, descr, thick, above, below)
 
     try:
         c.execute("INSERT INTO Locus (type, name, descr, thickness, above, below) \
@@ -63,5 +61,22 @@ def create_locus(type, name, descr, thick, above, below):
         print(f"Locus {name} added to database")
     
     except:
-        print("Input error")
+        print("Input error in create_locus")
+
+def create_find(find_type, dating, descr, weight, locus):
+    db_name = read_db_name()
+
+    db = sqlite3.connect(str(db_name))
+    db.isolation_level = None
+    c = db.cursor()
+
+    print("Creating find", find_type)
+    try:
+        c.execute("INSERT INTO Finds (find_type, dating, descr, weight, locus) \
+            VALUES(?,?,?,?,?)", (find_type, dating, descr, weight, locus))
+
+        print(f"Find {find_type} added to database")
+    
+    except:
+        print("Input error in create_find")
 

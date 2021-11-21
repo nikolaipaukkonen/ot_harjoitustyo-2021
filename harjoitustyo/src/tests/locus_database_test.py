@@ -16,7 +16,7 @@ class TestLocus_database(unittest.TestCase):
     def test_create_locus(self):
         check_db(self.db_name)
         create_locus("surface", "packed turf", 15, "-", "-", self.db_name)
-        #wip
+        #wip (implement read database)
 
     def test_read_db_name(self):
         f = open("db_list", "w+")

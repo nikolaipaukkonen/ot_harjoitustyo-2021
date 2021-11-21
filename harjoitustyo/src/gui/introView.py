@@ -8,7 +8,6 @@ class IntroView:
         self._root = root
         self._handle_main = handle_main
         self._frame = None
-        self._db_name = None
 
         self._initialize()
 
@@ -27,12 +26,14 @@ class IntroView:
 
         #tietokannan luominen/avaaminen
         self._entry = ttk.Entry(master=self._frame)
+
         button = ttk.Button(
             master=self._frame,
             text="Create / Open",
-            command=lambda:[
-                self._open_database_button_click(),
-                self._handle_main()]
+            command=lambda : [
+                self._open_database_button_click(), 
+                self._handle_main()
+            ]
         )
 
         label.pack()
