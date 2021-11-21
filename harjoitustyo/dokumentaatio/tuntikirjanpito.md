@@ -10,4 +10,5 @@
 | 16.11. | 3		 | Gui-asioita ja add locus |
 | 18.11. | 2		 | Tapahtumakäsittelijöiden rikkomista mainView.py:ssä |
 | 19.11. | 3		 | mainViewin lisäilyä ja testejä |
-| Yht.   | 19		 |  | 
+| 21.11. | 4		 | mainViewin toiminnallisuutta ja pylintiä |
+| Yht.   | 23		 |  | 
