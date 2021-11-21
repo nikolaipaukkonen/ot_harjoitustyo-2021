@@ -11,19 +11,21 @@ Lähtökohtaisesti kaikki projektit ovat samanlaisia ja niistä löytyy samat to
 
 ## Käyttöliittymä
 Alkuvaiheessa sovellus koostuu kolmesta näkymästä:
-* Luo uusi projekti / Avaa projekti
-* Lisää tai muokkaa stratigrafista yksikköä (alasvetovalikoilla)
-* Lisää löytö (alasvetovalikko)
-* Lisää näyte (alasvetovalikko)
+* Luo uusi projekti / Avaa projekti 
+* Lisää tai muokkaa stratigrafista yksikköä (alasvetovalikoilla) 
+* Lisää löytö (alasvetovalikko) 
+* Lisää näyte (alasvetovalikko) 
 * Tarkastele projektia (tekstimuotoinen listaus / stratigrafinen piirros tai matriisi)
 
 ## Perusversion tarjoama toiminnallisuus
 
 ### Projektin luominen ja muokkaaminen
-* Luo uusi projekti, avaa projekti, poista projekti
-* Lisää projektiin yksikkö (maa/rakenne/leikkaus, juokseva numero, maaperän kuvaus, väri, minkä alla, minkä päällä jne.)
+* Luo uusi projekti, avaa projekti, poista projekti *luo / avaa toteutettu*
+* Lisää projektiin yksikkö (maa/rakenne/leikkaus, juokseva numero, maaperän kuvaus, väri, minkä alla, minkä päällä jne.) *lisäys toteutettu*
 * Muokkaa yksikköä
 * Poista yksikkö
+* Lisää löytö *toteutettu*
+* Lisää näyte
 
 ### Projektin vienti ja tarkastelu
 * Projektin stratigrafisten yksiköiden tietojen listaaminen

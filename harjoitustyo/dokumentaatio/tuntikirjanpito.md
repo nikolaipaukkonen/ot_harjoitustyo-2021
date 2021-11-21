@@ -11,4 +11,5 @@
 | 18.11. | 2		 | Tapahtumakäsittelijöiden rikkomista mainView.py:ssä |
 | 19.11. | 3		 | mainViewin lisäilyä ja testejä |
 | 21.11. | 4		 | mainViewin toiminnallisuutta ja pylintiä |
-| Yht.   | 23		 |  | 
+| 21.11. | 1 		 | vaatimusmäärittelyn päivitys ja arkkitehtuurin dokumentointi |
+| Yht.   | 24		 |  | 
