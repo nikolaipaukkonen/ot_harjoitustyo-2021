@@ -53,13 +53,12 @@ def create_locus(type, name, descr, thick, above, below):
     db.isolation_level = None
     c = db.cursor()
 
-
     try:
         c.execute("INSERT INTO Locus (type, name, descr, thickness, above, below) \
             VALUES(?,?,?,?,?,?)", (type, name, descr, thick, above, below))
 
         print(f"Locus {name} added to database")
-    
+
     except:
         print("Input error in create_locus")
 
@@ -76,7 +75,6 @@ def create_find(find_type, dating, descr, weight, locus):
             VALUES(?,?,?,?,?)", (find_type, dating, descr, weight, locus))
 
         print(f"Find {find_type} added to database")
-    
+
     except:
         print("Input error in create_find")
-

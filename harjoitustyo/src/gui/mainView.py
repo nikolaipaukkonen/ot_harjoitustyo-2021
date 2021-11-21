@@ -34,7 +34,7 @@ class MainView:
 
         self.find_type_v = tk.StringVar(self._root)
         self.find_weight_v = tk.StringVar(self._root)
-        
+
         self._initialize()
 
     def pack(self):
@@ -56,7 +56,7 @@ class MainView:
                 thick,
                 0,
                 0)
-        
+
     def add_find(self):
         find_type = self.find_type_v.get()
         dating = self._find_dating_entry.get()
@@ -83,9 +83,9 @@ class MainView:
         self._descr_entry.insert(0, "Insert locus description")
 
         self._thick_entry = ttk.Spinbox(
-                        self._frame, 
-                        from_=0, 
-                        to=200, 
+                        self._frame,
+                        from_=0,
+                        to=200,
                         textvariable=self.thick_v
                         )
 
@@ -94,14 +94,14 @@ class MainView:
             text="Add locus",
             command=lambda : self.add_locus()
         )
-        
+
         locusLabel.pack()
         self._type_entry.pack()
         self._name_entry.pack()
         self._descr_entry.pack()
         self._thick_entry.pack()
         add_locus_button.pack()
-    
+
     def _initialize_add_find(self):
         findLabel = ttk.Label(self._frame, text="Create new find")
 
@@ -144,7 +144,7 @@ class MainView:
         sampleLabel.pack()
         add_sample_button.pack()
 
-    def _initialize(self): 
+    def _initialize(self):
         self._frame = ttk.Frame(self._root)
         label = ttk.Label(self._frame, text="Select action", font="Helvetica 15 bold")
 
@@ -161,3 +161,4 @@ class MainView:
         self._initialize_add_sample()
 
         add_return_button.pack()
+        
