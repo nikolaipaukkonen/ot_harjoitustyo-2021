@@ -13,4 +13,5 @@
 | 21.11. | 4		 | mainViewin toiminnallisuutta ja pylintiä |
 | 21.11. | 1 		 | vaatimusmäärittelyn päivitys ja arkkitehtuurin dokumentointi |
 | 28.11. | 2		 | taulukkonäkymän aloitus |
-| Yht.   | 26		 |  | 
+| 28.11. | 4		 | taulukkonäkymä, testejä ja korjauksia |
+| Yht.   | 30		 |  | 
