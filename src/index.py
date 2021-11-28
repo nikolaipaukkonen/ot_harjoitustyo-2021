@@ -8,7 +8,7 @@ def main():
 
     window = Tk()
     window.title('Stratigraphy Database Manager')
-    window.geometry('500x500')
+    window.geometry('500x1000')
 
     ui = UI(window)
     ui.start_gui()

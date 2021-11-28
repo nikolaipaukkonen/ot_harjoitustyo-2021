@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, constants, StringVar
-from locus_database import create_find, create_locus
+from locus_database import create_find, create_locus, fetch_loci, fetch_finds
 from locus import Locus
 
 #päänäkymä, jossa syötetään tietoja eri taulukoihin
@@ -144,6 +144,20 @@ class MainView:
         sampleLabel.pack()
         add_sample_button.pack()
 
+    def display_loci(self):
+        rows = fetch_loci()
+        for row in rows:
+            e = ttk.Entry(self._frame, width=50)
+            e.insert(0, row)
+            e.pack()
+
+    def display_finds(self):
+        rows = fetch_finds()
+        for row in rows:
+            e = ttk.Entry(self._frame, width=50)
+            e.insert(0, row)
+            e.pack()
+
     def _initialize(self):
         self._frame = ttk.Frame(self._root)
         label = ttk.Label(self._frame, text="Select action", font="Helvetica 15 bold")
@@ -154,11 +168,26 @@ class MainView:
             command=lambda: self._handle_intro()
         )
 
+        add_display_loci_button = ttk.Button(
+            master=self._frame,
+            text="Display loci",
+            command=lambda: self.display_loci()
+        )
+
+        add_display_finds_button = ttk.Button(
+            master=self._frame,
+            text="Display finds",
+            command=lambda: self.display_finds()
+        )
+
         label.pack()
 
         self._initialize_add_locus()
         self._initialize_add_find()
         self._initialize_add_sample()
+        
+        add_display_loci_button.pack()
+        add_display_finds_button.pack()
 
         add_return_button.pack()
         

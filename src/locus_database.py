@@ -62,6 +62,29 @@ def create_locus(type, name, descr, thick, above, below):
     except:
         print("Input error in create_locus")
 
+def fetch_loci():
+    db_name = read_db_name()
+
+    db = sqlite3.connect(str(db_name))
+    db.isolation_level = None
+    c = db.cursor()
+
+    c.execute("SELECT * FROM Locus")
+
+    rows = (c.fetchall())
+    return rows
+
+def fetch_finds():
+    db_name = read_db_name()
+
+    db = sqlite3.connect(str(db_name))
+    db.isolation_level = None
+    c = db.cursor()
+
+    c.execute("SELECT * FROM Finds")
+    rows = (c.fetchall())
+    return rows
+
 def create_find(find_type, dating, descr, weight, locus):
     db_name = read_db_name()
 
