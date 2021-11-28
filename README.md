@@ -11,7 +11,7 @@ Ohjelma on kehitetty Pythonin versiolla 3.8.10.
 ## Dokumentaatio
 * Käyttöohje
 * [Vaatimusmäärittely](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/dokumentaatio/vaatimusmaarittely.md)
-* Arkkitehtuurikuvaus
+* [Arkkitehtuurikuvaus](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/dokumentaatio/arkkitehtuurikuvaus.md)
 * Testausdokumentti
 * [Työaikakirjanpito](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/dokumentaatio/tuntikirjanpito.md)
 
