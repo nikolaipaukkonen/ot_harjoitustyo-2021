@@ -52,7 +52,7 @@ def read_db_name():
 
 def create_locus(locus):
     ''' Funktio luo stratigrafisen yksikön (olion) ja vie sen tietokantaan '''
-    
+
     db_name = read_db_name()
 
     db = sqlite3.connect(str(db_name))
