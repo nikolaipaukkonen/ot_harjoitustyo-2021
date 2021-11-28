@@ -137,8 +137,6 @@ class MainView:
 
     def display_loci(self):
         ''' Hakee tietokannasta stratigrafiset kerrokset ja tulostaa ne näkymään '''
-
-        self._handle_main()
         rows = fetch_loci()
         display_locus_label = ttk.Label(self._frame, text="Current stratigraphical units")
         display_locus_label.pack()
@@ -149,6 +147,7 @@ class MainView:
             e.pack()
 
     def display_finds(self):
+        ''' Hakee tietokannasta löydöt ja tulostaa ne näkymään '''
         rows = fetch_finds()
         display_finds_label = ttk.Label(self._frame, text="Current registered finds")
         display_finds_label.pack()
