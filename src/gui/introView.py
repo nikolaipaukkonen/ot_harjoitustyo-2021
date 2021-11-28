@@ -31,8 +31,7 @@ class IntroView:
             master=self._frame,
             text="Create / Open",
             command=lambda : [
-                self._open_database_button_click(),
-                self._handle_main()
+                self._open_database_button_click()
             ]
         )
 
@@ -46,6 +45,8 @@ class IntroView:
         if entry_value != "":
             db_name = entry_value + ".db"
             check_db(db_name)
+            self._handle_main()
         else:
-            print("Database name can't be left empty")
+            errorLabel = ttk.Label(master=self._frame, text="Database name can't be left empty")
+            errorLabel.pack()
         

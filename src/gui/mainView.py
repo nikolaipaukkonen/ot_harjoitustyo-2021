@@ -1,9 +1,10 @@
+''' Päänäkymä, jossa syötetään tietoja eri taulukoihin '''
+
 import tkinter as tk
 from tkinter import ttk, constants, StringVar
 from locus_database import create_find, create_locus, fetch_loci, fetch_finds
 from locus import Locus
-
-#päänäkymä, jossa syötetään tietoja eri taulukoihin
+from find import Find
 
 #locuksen tyyppivaihtoehdot options-valikkoon
 TYPES = ["Soil", "Construction", "Cut"]
@@ -49,13 +50,8 @@ class MainView:
         descr = self._descr_entry.get()
         thick = int(self.thick_v.get())
 
-        create_locus(
-                type_value,
-                name_value,
-                descr,
-                thick,
-                0,
-                0)
+        locus = Locus(type_value, name_value, descr, thick, 0, 0)
+        create_locus(locus)
 
     def add_find(self):
         find_type = self.find_type_v.get()
@@ -64,13 +60,8 @@ class MainView:
         weight = self.find_weight_v.get()
         locus = 0
 
-        create_find(
-            find_type,
-            dating,
-            descr,
-            weight,
-            locus
-        )
+        find = Find(find_type, dating, descr, weight, locus)
+        create_find(find)
 
     def _initialize_add_locus(self):
         locusLabel = ttk.Label(self._frame, text="Create new locus")
@@ -145,7 +136,13 @@ class MainView:
         add_sample_button.pack()
 
     def display_loci(self):
+        ''' Hakee tietokannasta stratigrafiset kerrokset ja tulostaa ne näkymään '''
+
+        self._handle_main()
         rows = fetch_loci()
+        display_locus_label = ttk.Label(self._frame, text="Current stratigraphical units")
+        display_locus_label.pack()
+
         for row in rows:
             e = ttk.Entry(self._frame, width=50)
             e.insert(0, row)
@@ -153,6 +150,9 @@ class MainView:
 
     def display_finds(self):
         rows = fetch_finds()
+        display_finds_label = ttk.Label(self._frame, text="Current registered finds")
+        display_finds_label.pack()
+
         for row in rows:
             e = ttk.Entry(self._frame, width=50)
             e.insert(0, row)
@@ -185,7 +185,7 @@ class MainView:
         self._initialize_add_locus()
         self._initialize_add_find()
         self._initialize_add_sample()
-        
+
         add_display_loci_button.pack()
         add_display_finds_button.pack()
 

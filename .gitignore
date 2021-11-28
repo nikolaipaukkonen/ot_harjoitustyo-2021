@@ -2,13 +2,13 @@
 /laskarit/viikko2/unicafe/__pycache__
 /laskarit/viikko2/unicafe/.coverage
 /laskarit/viikko2/unicafe/htmlcov
-laskarit/viikko2/unicafe/src/__pycache__/
-laskarit/viikko2/unicafe/src/tests/__pycache__/
+/laskarit/viikko2/unicafe/src/__pycache__/
+/laskarit/viikko2/unicafe/src/tests/__pycache__/
 *.db
-harjoitustyo/src/__pycache__/
-harjoitustyo/src/tests/__pycache__/
-harjoitustyo/src/tests/.pytest_cache/
-harjoitustyo/src/.pytest_cache
-harjoitustyo/htmlcov/
-harjoitustyo/.coverage
+/src/__pycache__/
+/src/tests/__pycache__/
+/src/tests/.pytest_cache/
+/src/.pytest_cache
+/htmlcov/
+/.coverage
 
