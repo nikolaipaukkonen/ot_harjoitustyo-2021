@@ -5,6 +5,7 @@
 /laskarit/viikko2/unicafe/src/__pycache__/
 /laskarit/viikko2/unicafe/src/tests/__pycache__/
 *.db
+*.csv
 /src/__pycache__/
 /src/tests/__pycache__/
 /src/tests/.pytest_cache/

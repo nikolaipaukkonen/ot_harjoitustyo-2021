@@ -14,4 +14,5 @@
 | 21.11. | 1 		 | vaatimusmäärittelyn päivitys ja arkkitehtuurin dokumentointi |
 | 28.11. | 2		 | taulukkonäkymän aloitus |
 | 28.11. | 4		 | taulukkonäkymä, testejä ja korjauksia |
-| Yht.   | 30		 |  | 
+| 29.11. | 2         | lisätty csv-vienti |
+| Yht.   | 32		 |  | 

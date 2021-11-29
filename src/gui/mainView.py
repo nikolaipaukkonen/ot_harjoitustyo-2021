@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import ttk, constants, StringVar
-from locus_database import create_find, create_locus, fetch_loci, fetch_finds
+from locus_database import create_find, create_locus, fetch_loci, fetch_finds, export_data
 from locus import Locus
 from find import Find
 
@@ -135,6 +135,21 @@ class MainView:
         sampleLabel.pack()
         add_sample_button.pack()
 
+    def _initialize_export_button(self):
+        export_filename_label = ttk.Label(master=self._frame, text="Export locus data")
+        self.export_filename = ttk.Entry(master=self._frame)
+        self.export_filename.insert(0, "Enter filename")
+
+        add_export_loci_button = ttk.Button(
+            master=self._frame,
+            text="Export locus data as csv file",
+            command=lambda: self.handle_export()
+        )
+
+        export_filename_label.pack()
+        self.export_filename.pack()
+        add_export_loci_button.pack()
+
     def display_loci(self):
         ''' Hakee tietokannasta stratigrafiset kerrokset ja tulostaa ne näkymään '''
         rows = fetch_loci()
@@ -156,6 +171,10 @@ class MainView:
             e = ttk.Entry(self._frame, width=50)
             e.insert(0, row)
             e.pack()
+
+    def handle_export(self):
+        filename = self.export_filename.get()
+        export_data(filename)
 
     def _initialize(self):
         self._frame = ttk.Frame(self._root)
@@ -187,6 +206,8 @@ class MainView:
 
         add_display_loci_button.pack()
         add_display_finds_button.pack()
+
+        self._initialize_export_button()
 
         add_return_button.pack()
         

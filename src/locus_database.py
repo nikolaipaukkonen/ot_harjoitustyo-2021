@@ -1,6 +1,7 @@
 ''' Tietokantojen luominen ja täydentäminen, käytetään mainView.py:stä käsin '''
 
 import sqlite3
+import csv
 from locus import Locus
 from find import Find
 
@@ -123,3 +124,11 @@ def create_find(find):
 
     except:
         print("Input error in create_find")
+
+def export_data(filename):
+    with open(f"{filename}.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Type", "Name", "Description", "Thickness", "Above", "Below"])
+        rows = fetch_loci()
+        writer.writerows(rows)
+        print("Export data performed")
