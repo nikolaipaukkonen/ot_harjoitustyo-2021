@@ -14,5 +14,7 @@
 | 21.11. | 1 		 | vaatimusmäärittelyn päivitys ja arkkitehtuurin dokumentointi |
 | 28.11. | 2		 | taulukkonäkymän aloitus |
 | 28.11. | 4		 | taulukkonäkymä, testejä ja korjauksia |
-| 29.11. | 2         | lisätty csv-vienti |
-| Yht.   | 32		 |  | 
+| 29.11. | 2        	 | lisätty csv-vienti |
+| 3.12.  | 1        	 | lisätoimintojen luonnostelua |
+| 4.12.  | 1		 | aloitettu locusten relaatioiden lisääminen |
+| Yht.   | 34		 |  | 

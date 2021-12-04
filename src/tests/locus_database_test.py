@@ -36,7 +36,7 @@ class TestLocus_database(unittest.TestCase):
 
     def test_create_locus(self):
         check_db(self.db_name)
-        locus = Locus("Soil", "Top soil", "Loose gravel", 10, 0, 0)
+        locus = Locus("Soil", "Top soil", "Loose gravel", 10, 0)
         create_locus(locus)
 
         rows = fetch_loci()
@@ -46,7 +46,7 @@ class TestLocus_database(unittest.TestCase):
         check_db(self.db_name)
         for i in range(100):   
             name = str(i) + " layer"
-            locus = Locus("Soil", name, "Loose gravel", 10, 0, 0)
+            locus = Locus("Soil", name, "Loose gravel", 10, 0)
             create_locus(locus)
 
         rows = fetch_loci()

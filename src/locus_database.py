@@ -24,8 +24,7 @@ def check_db(db_name):
                 name TEXT UNIQUE, \
                 descr TEXT, \
                 thickness INTEGER, \
-                above TEXT, \
-                below TEXT)")
+                above INTEGER REFERENCES Locus)")
         c.execute(
             "CREATE TABLE Finds \
                 (id INTEGER PRIMARY KEY, \
@@ -61,14 +60,13 @@ def create_locus(locus):
     c = db.cursor()
 
     try:
-        c.execute("INSERT INTO Locus (type, name, descr, thickness, above, below) \
-            VALUES(?,?,?,?,?,?)", (
+        c.execute("INSERT INTO Locus (type, name, descr, thickness, above) \
+            VALUES(?,?,?,?,?)", (
                 locus.l_type,
                 locus.name,
                 locus.descr,
                 locus.thick,
-                locus.above,
-                locus.below)
+                locus.above)
                 )
 
         print(f"Locus {locus.name} added to database")
@@ -89,6 +87,15 @@ def fetch_loci():
     rows = (c.fetchall())
     return rows
 
+def fetch_locus_ids():
+        rows = fetch_loci()
+        locus_ids = []
+
+        for row in rows:
+            locus_ids.append(row[0]) 
+            
+        return locus_ids
+        
 def fetch_finds():
     ''' Hae ja tulosta näkymään löydöt '''
     db_name = read_db_name()
@@ -128,7 +135,7 @@ def create_find(find):
 def export_data(filename):
     with open(f"{filename}.csv", "w") as f:
         writer = csv.writer(f)
-        writer.writerow(["Type", "Name", "Description", "Thickness", "Above", "Below"])
+        writer.writerow(["Type", "Name", "Description", "Thickness", "Above"])
         rows = fetch_loci()
         writer.writerows(rows)
         print("Export data performed")

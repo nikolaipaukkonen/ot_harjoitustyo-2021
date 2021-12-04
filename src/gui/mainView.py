@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import ttk, constants, StringVar
-from locus_database import create_find, create_locus, fetch_loci, fetch_finds, export_data
+from locus_database import create_find, create_locus, fetch_loci, fetch_finds, fetch_locus_ids, export_data, fetch_locus_ids
 from locus import Locus
 from find import Find
 
@@ -22,9 +22,11 @@ class MainView:
         self._type_entry = None
         self._descr_entry = None
         self._thick_entry = None
+        self._above_entry = None
 
         self.type_v = tk.StringVar(self._root)
         self.thick_v = tk.StringVar(self._root)
+        self.above_v = tk.StringVar(self._root)
         self.thick_v.set("1")
 
         self._find_type_entry = None
@@ -49,8 +51,9 @@ class MainView:
         name_value = self._name_entry.get()
         descr = self._descr_entry.get()
         thick = int(self.thick_v.get())
+        above = int(self.above_v.get())
 
-        locus = Locus(type_value, name_value, descr, thick, 0, 0)
+        locus = Locus(type_value, name_value, descr, thick, above)
         create_locus(locus)
 
     def add_find(self):
@@ -64,6 +67,8 @@ class MainView:
         create_find(find)
 
     def _initialize_add_locus(self):
+        locus_ids = fetch_locus_ids()
+
         locusLabel = ttk.Label(self._frame, text="Create new locus")
         self._type_entry = ttk.OptionMenu(self._frame,self.type_v, TYPES[0],*TYPES)
 
@@ -80,6 +85,12 @@ class MainView:
                         textvariable=self.thick_v
                         )
 
+        self._above_entry = ttk.OptionMenu(
+                        self._frame,
+                        self.above_v,
+                        *locus_ids
+        )
+
         add_locus_button = ttk.Button(
             master=self._frame,
             text="Add locus",
@@ -91,6 +102,7 @@ class MainView:
         self._name_entry.pack()
         self._descr_entry.pack()
         self._thick_entry.pack()
+        self._above_entry.pack()
         add_locus_button.pack()
 
     def _initialize_add_find(self):
