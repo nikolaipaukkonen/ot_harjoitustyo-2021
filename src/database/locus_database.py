@@ -2,8 +2,8 @@
 
 import sqlite3
 import csv
-from locus import Locus
-from find import Find
+from database.locus import Locus
+from database.find import Find
 
 def check_db(db_name):
     ''' Tarkista onko tietokantaa olemassa ja luo sellainen jos ei ole '''

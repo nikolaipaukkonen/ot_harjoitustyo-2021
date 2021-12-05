@@ -3,9 +3,9 @@
 import unittest
 import os
 from pathlib import Path
-from locus_database import check_db, create_locus, fetch_finds, fetch_loci, create_find
-from locus import Locus
-from find import Find
+from database.locus_database import check_db, create_locus, fetch_finds, fetch_loci, create_find
+from database.locus import Locus
+from database.find import Find
 
 class TestLocus_database(unittest.TestCase):
     def setUp(self):

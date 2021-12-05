@@ -2,9 +2,9 @@
 
 import tkinter as tk
 from tkinter import ttk, constants, StringVar
-from locus_database import create_find, create_locus, fetch_loci, fetch_finds, fetch_locus_ids, export_data, fetch_locus_ids
-from locus import Locus
-from find import Find
+from database.locus_database import create_find, create_locus, fetch_loci, fetch_finds, fetch_locus_ids, export_data, fetch_locus_ids
+from database.locus import Locus
+from database.find import Find
 
 #locuksen tyyppivaihtoehdot options-valikkoon
 TYPES = ["Soil", "Construction", "Cut"]
@@ -17,6 +17,8 @@ class MainView:
         self._handle_intro = handle_intro
 
         self._frame = None
+
+        self.locus_ids = fetch_locus_ids()
 
         self._name_entry = None
         self._type_entry = None
@@ -37,6 +39,7 @@ class MainView:
 
         self.find_type_v = tk.StringVar(self._root)
         self.find_weight_v = tk.StringVar(self._root)
+        self.find_locus_v = tk.StringVar(self._root)
 
         self._initialize()
 
@@ -55,19 +58,20 @@ class MainView:
 
         locus = Locus(type_value, name_value, descr, thick, above)
         create_locus(locus)
+        self.locus_ids = fetch_locus_ids()
 
     def add_find(self):
         find_type = self.find_type_v.get()
         dating = self._find_dating_entry.get()
         descr = self._find_descr_entry.get()
         weight = self.find_weight_v.get()
-        locus = 0
+        locus = int(self.find_locus_v.get())
 
         find = Find(find_type, dating, descr, weight, locus)
         create_find(find)
 
     def _initialize_add_locus(self):
-        locus_ids = fetch_locus_ids()
+        self.locus_ids = fetch_locus_ids()
 
         locusLabel = ttk.Label(self._frame, text="Create new locus")
         self._type_entry = ttk.OptionMenu(self._frame,self.type_v, TYPES[0],*TYPES)
@@ -88,7 +92,7 @@ class MainView:
         self._above_entry = ttk.OptionMenu(
                         self._frame,
                         self.above_v,
-                        *locus_ids
+                        *self.locus_ids
         )
 
         add_locus_button = ttk.Button(
@@ -120,7 +124,11 @@ class MainView:
                                 to=10000,
                                 textvariable=self.find_weight_v
                             )
-        self._find_locus_entry = ttk.OptionMenu(self._frame, self.find_type_v)
+        self._find_locus_entry = ttk.OptionMenu(
+                self._frame,
+                self.find_locus_v,
+                *self.locus_ids
+        )
 
         add_find_button = ttk.Button(
             master=self._frame,

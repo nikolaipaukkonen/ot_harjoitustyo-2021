@@ -17,4 +17,5 @@
 | 29.11. | 2        	 | lisätty csv-vienti |
 | 3.12.  | 1        	 | lisätoimintojen luonnostelua |
 | 4.12.  | 1		 | aloitettu locusten relaatioiden lisääminen |
-| Yht.   | 34		 |  | 
+| 5.12.  | 2		 | jatkettu relaatioiden lisäämistä |
+| Yht.   | 36		 |  | 

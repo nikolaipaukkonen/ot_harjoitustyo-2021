@@ -1,5 +1,5 @@
 from tkinter import ttk, constants
-from locus_database import check_db
+from database.locus_database import check_db
 
 #aloitusnäkymä, jossa avataan tai luodaan käytettävä tietokanta
 
