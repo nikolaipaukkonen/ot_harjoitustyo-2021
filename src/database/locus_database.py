@@ -88,14 +88,14 @@ def fetch_loci():
     return rows
 
 def fetch_locus_ids():
-        rows = fetch_loci()
-        locus_ids = []
+    rows = fetch_loci()
+    locus_ids = []
 
-        for row in rows:
-            locus_ids.append(row[0]) 
-            
-        return locus_ids
-        
+    for row in rows:
+        locus_ids.append(row[0])
+
+    return locus_ids
+
 def fetch_finds():
     ''' Hae ja tulosta näkymään löydöt '''
     db_name = read_db_name()
@@ -139,3 +139,4 @@ def export_data(filename):
         rows = fetch_loci()
         writer.writerows(rows)
         print("Export data performed")
+        
