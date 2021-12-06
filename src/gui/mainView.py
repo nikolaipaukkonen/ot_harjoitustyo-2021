@@ -30,6 +30,7 @@ class MainView:
         self.thick_v = tk.StringVar(self._root)
         self.above_v = tk.StringVar(self._root)
         self.thick_v.set("1")
+        self.above_v.set("0")
 
         self._find_type_entry = None
         self._find_dating_entry = None
@@ -54,7 +55,8 @@ class MainView:
         name_value = self._name_entry.get()
         descr = self._descr_entry.get()
         thick = int(self.thick_v.get())
-        above = int(self.above_v.get())
+        above = above = int(self.above_v.get())
+
 
         locus = Locus(type_value, name_value, descr, thick, above)
         create_locus(locus)
