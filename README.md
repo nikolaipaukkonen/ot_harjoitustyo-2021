@@ -5,7 +5,7 @@ Tämä sovellus on tarkoitettu arkeologisen stratigrafisen aineiston hallinnoint
 
 Kurssin laskuharjoitukset ovat [erillisessä kansiossa](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/laskarit/laskarit_readme.md).
 
-Ensimmäinen release: [Viikko 5 deadline](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/releases/tag/untagged-0695b3c4339d5cf9140f).
+Ensimmäinen release: [Viikko 5 deadline](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/releases).
 
 ## Python-versio
 Ohjelma on kehitetty Pythonin versiolla 3.8.10.
