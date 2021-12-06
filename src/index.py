@@ -5,12 +5,12 @@ from tkinter import Tk
 from gui.gui import UI
 
 def main():
-    #luo väliaikaisen muistin session tietokannoille
-    file = open("db_list", "w+")
+    ''' Ohjelman main-metodi joka käynnistää käyttöliittymän ja alustaa tietokantamuistin'''
+    open("db_list", "w+", encoding="utf-8")
 
     window = Tk()
     window.title('Stratigraphy Database Manager')
-    window.geometry('500x1000')
+    window.geometry('1200x1000')
 
     ui = UI(window)
     ui.start_gui()

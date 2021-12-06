@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import ttk, constants, StringVar
-from database.locus_database import create_find, create_locus, fetch_loci, fetch_finds, fetch_locus_ids, export_data, fetch_locus_ids
+from database.locus_database import *
 from database.locus import Locus
 from database.find import Find
 
@@ -101,13 +101,13 @@ class MainView:
             command=lambda : self.add_locus()
         )
 
-        locusLabel.pack()
-        self._type_entry.pack()
-        self._name_entry.pack()
-        self._descr_entry.pack()
-        self._thick_entry.pack()
-        self._above_entry.pack()
-        add_locus_button.pack()
+        locusLabel.grid(row=1,column=2)
+        self._type_entry.grid(row=2,column=0)
+        self._name_entry.grid(row=2,column=1)
+        self._descr_entry.grid(row=2,column=2)
+        self._thick_entry.grid(row=2,column=3)
+        self._above_entry.grid(row=2,column=4)
+        add_locus_button.grid(row=3,column=2)
 
     def _initialize_add_find(self):
         findLabel = ttk.Label(self._frame, text="Create new find")
@@ -136,12 +136,12 @@ class MainView:
             command=lambda : self.add_find()
         )
 
-        findLabel.pack()
-        self._find_type_entry.pack()
-        self._find_dating_entry.pack()
-        self._find_weight_entry.pack()
-        self._find_locus_entry.pack()
-        add_find_button.pack()
+        findLabel.grid(row=5, column=2)
+        self._find_type_entry.grid(row=6, column=0)
+        self._find_dating_entry.grid(row=6, column=1)
+        self._find_weight_entry.grid(row=6, column=2)
+        self._find_locus_entry.grid(row=6, column=3)
+        add_find_button.grid(row=7, column=2)
 
     def _initialize_add_sample(self): #to be implemented
         sampleLabel = ttk.Label(self._frame, text="Create new sample")
@@ -152,8 +152,8 @@ class MainView:
             #command=self._handle_add_sample
         )
 
-        sampleLabel.pack()
-        add_sample_button.pack()
+        sampleLabel.grid(row=9, column=2)
+        add_sample_button.grid(row=11, column=2)
 
     def _initialize_export_button(self):
         export_filename_label = ttk.Label(master=self._frame, text="Export locus data")
@@ -166,31 +166,36 @@ class MainView:
             command=lambda: self.handle_export()
         )
 
-        export_filename_label.pack()
-        self.export_filename.pack()
-        add_export_loci_button.pack()
+        export_filename_label.grid(row=13, column=2)
+        self.export_filename.grid(row=14, column=2)
+        add_export_loci_button.grid(row=15, column=2)
 
     def display_loci(self):
         ''' Hakee tietokannasta stratigrafiset kerrokset ja tulostaa ne näkymään '''
         rows = fetch_loci()
         display_locus_label = ttk.Label(self._frame, text="Current stratigraphical units")
-        display_locus_label.pack()
+        display_locus_label.grid(column=1, row=18)
+
+        i=0
 
         for row in rows:
-            e = ttk.Entry(self._frame, width=50)
-            e.insert(0, row)
-            e.pack()
+            entry = ttk.Entry(self._frame, width=50)
+            entry.insert(0, row)
+            entry.grid(column=1, row=19+i)
+            i += 1
 
     def display_finds(self):
         ''' Hakee tietokannasta löydöt ja tulostaa ne näkymään '''
         rows = fetch_finds()
         display_finds_label = ttk.Label(self._frame, text="Current registered finds")
-        display_finds_label.pack()
+        display_finds_label.grid(column=3, row=18)
+        i = 0
 
         for row in rows:
-            e = ttk.Entry(self._frame, width=50)
-            e.insert(0, row)
-            e.pack()
+            entry = ttk.Entry(self._frame, width=50)
+            entry.insert(0, row)
+            entry.grid(column=3, row=19+i)
+            i += 1
 
     def handle_export(self):
         filename = self.export_filename.get()
@@ -218,16 +223,17 @@ class MainView:
             command=lambda: self.display_finds()
         )
 
-        label.pack()
+        label.grid(row=0, column=2)
 
         self._initialize_add_locus()
         self._initialize_add_find()
         self._initialize_add_sample()
 
-        add_display_loci_button.pack()
-        add_display_finds_button.pack()
+        add_display_loci_button.grid(row=17, column=1)
+        add_display_finds_button.grid(row=17, column=3)
 
         self._initialize_export_button()
 
-        add_return_button.pack()
-        
+        add_return_button.grid(row=17, column=2)
+        self.display_loci()
+        self.display_finds()

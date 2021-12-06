@@ -8,24 +8,24 @@ from database.find import Find
 def check_db(db_name):
     ''' Tarkista onko tietokantaa olemassa ja luo sellainen jos ei ole '''
 
-    db = sqlite3.connect(str(db_name))
-    f=open("db_list", "w+")
-    f.write(f"{db_name}")
-    db.isolation_level = None
-    c = db.cursor()
+    current_db = sqlite3.connect(str(db_name))
+    file=open("db_list", "w+", encoding="utf-8")
+    file.write(f"{db_name}")
+    current_db.isolation_level = None
+    cursor = current_db.cursor()
 
-    c.execute("PRAGMA foreign_keys = ON")
+    cursor.execute("PRAGMA foreign_keys = ON")
 
     # Initialize database
     try:
-        c.execute("CREATE TABLE Locus \
+        cursor.execute("CREATE TABLE Locus \
                 (id INTEGER PRIMARY KEY, \
                 type TEXT, \
                 name TEXT UNIQUE, \
                 descr TEXT, \
                 thickness INTEGER, \
                 above INTEGER REFERENCES Locus)")
-        c.execute(
+        cursor.execute(
             "CREATE TABLE Finds \
                 (id INTEGER PRIMARY KEY, \
                 find_type TEXT, \
@@ -33,7 +33,7 @@ def check_db(db_name):
                 descr, TEXT, \
                 weight INTEGER, \
                 locus INTEGER REFERENCES Locus)")
-        c.execute(
+        cursor.execute(
             "CREATE TABLE Samples \
             (id INTEGER PRIMARY KEY, \
             sample_type TEXT UNIQUE, \
@@ -46,8 +46,8 @@ def check_db(db_name):
 
 def read_db_name():
     ''' Lue tietokannan nimi "muistista" '''
-    f = open("db_list", "r")
-    db_name = f.readline()
+    file = open("db_list", "r", encoding="utf-8")
+    db_name = file.readline()
     return db_name
 
 def create_locus(locus):
@@ -55,12 +55,12 @@ def create_locus(locus):
 
     db_name = read_db_name()
 
-    db = sqlite3.connect(str(db_name))
-    db.isolation_level = None
-    c = db.cursor()
+    current_database = sqlite3.connect(str(db_name))
+    current_database.isolation_level = None
+    cursor = current_database.cursor()
 
     try:
-        c.execute("INSERT INTO Locus (type, name, descr, thickness, above) \
+        cursor.execute("INSERT INTO Locus (type, name, descr, thickness, above) \
             VALUES(?,?,?,?,?)", (
                 locus.l_type,
                 locus.name,
@@ -78,13 +78,13 @@ def fetch_loci():
     ''' Hae ja tulosta näkymään stratigrafiset yksiköt (locukset) '''
     db_name = read_db_name()
 
-    db = sqlite3.connect(str(db_name))
-    db.isolation_level = None
-    c = db.cursor()
+    current_database = sqlite3.connect(str(db_name))
+    current_database.isolation_level = None
+    cursor = current_database.cursor()
 
-    c.execute("SELECT * FROM Locus")
+    cursor.execute("SELECT * FROM Locus")
 
-    rows = (c.fetchall())
+    rows = (cursor.fetchall())
     return rows
 
 def fetch_locus_ids():
@@ -100,12 +100,12 @@ def fetch_finds():
     ''' Hae ja tulosta näkymään löydöt '''
     db_name = read_db_name()
 
-    db = sqlite3.connect(str(db_name))
-    db.isolation_level = None
-    c = db.cursor()
+    current_database = sqlite3.connect(str(db_name))
+    current_database.isolation_level = None
+    cursor = current_database.cursor()
 
-    c.execute("SELECT * FROM Finds")
-    rows = (c.fetchall())
+    cursor.execute("SELECT * FROM Finds")
+    rows = (cursor.fetchall())
     return rows
 
 def create_find(find):
@@ -113,13 +113,13 @@ def create_find(find):
 
     db_name = read_db_name()
 
-    db = sqlite3.connect(str(db_name))
-    db.isolation_level = None
-    c = db.cursor()
+    current_database = sqlite3.connect(str(db_name))
+    current_database.isolation_level = None
+    cursor = current_database.cursor()
 
     print("Creating find", find.find_type)
     try:
-        c.execute("INSERT INTO Finds (find_type, dating, descr, weight, locus) \
+        cursor.execute("INSERT INTO Finds (find_type, dating, descr, weight, locus) \
             VALUES(?,?,?,?,?)", (
                 find.find_type,
                 find.dating,
@@ -133,8 +133,8 @@ def create_find(find):
         print("Input error in create_find")
 
 def export_data(filename):
-    with open(f"{filename}.csv", "w") as f:
-        writer = csv.writer(f)
+    with open(f"{filename}.csv", "w") as file:
+        writer = csv.writer(file)
         writer.writerow(["Type", "Name", "Description", "Thickness", "Above"])
         rows = fetch_loci()
         writer.writerows(rows)

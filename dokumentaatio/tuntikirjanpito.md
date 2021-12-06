@@ -18,4 +18,5 @@
 | 3.12.  | 1        	 | lisätoimintojen luonnostelua |
 | 4.12.  | 1		 | aloitettu locusten relaatioiden lisääminen |
 | 5.12.  | 2		 | jatkettu relaatioiden lisäämistä |
-| Yht.   | 36		 |  | 
+| 6.12.  | 5		 | muokattu asettelua, korjattu pylint-virheitä |
+| Yht.   | 41		 |  | 
