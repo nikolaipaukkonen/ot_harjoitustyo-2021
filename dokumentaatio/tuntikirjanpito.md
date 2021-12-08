@@ -19,4 +19,5 @@
 | 4.12.  | 1		 | aloitettu locusten relaatioiden lisääminen |
 | 5.12.  | 2		 | jatkettu relaatioiden lisäämistä |
 | 6.12.  | 5		 | muokattu asettelua, korjattu pylint-virheitä |
-| Yht.   | 41		 |  | 
+| 8.12.  | 1    	 | aloitettu sample-valikon tekeminen |
+| Yht.   | 42		 |  | 
