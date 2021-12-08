@@ -5,11 +5,13 @@ from tkinter import ttk, constants, StringVar
 from database.locus_database import *
 from database.locus import Locus
 from database.find import Find
+from database.sample import Sample
 
-#locuksen tyyppivaihtoehdot options-valikkoon
+#locuksen, löydön ja näytteen tyyppivaihtoehdot options-valikkoon
 TYPES = ["Soil", "Construction", "Cut"]
 FINDS = ["Pottery", "Lithic", "Coin", "Iron object", "Silver", \
     "Gold", "Nail", "Glass", "Bone", "Wood", "Lead"]
+SAMPLES = ["Charcoal", "Soil", "Other"]
 
 class MainView:
     def __init__(self,root,handle_intro): #siistittävä
@@ -41,6 +43,12 @@ class MainView:
         self.find_type_v = tk.StringVar(self._root)
         self.find_weight_v = tk.StringVar(self._root)
         self.find_locus_v = tk.StringVar(self._root)
+
+        self._sample_type_entry = None
+        self._sample_locus_entry = None
+
+        self.sample_type_v = tk.StringVar(self._root)
+        self.sample_locus_v = tk.StringVar(self._root)
 
         self._initialize()
 
@@ -126,6 +134,7 @@ class MainView:
                                 to=10000,
                                 textvariable=self.find_weight_v
                             )
+
         self._find_locus_entry = ttk.OptionMenu(
                 self._frame,
                 self.find_locus_v,
@@ -148,14 +157,35 @@ class MainView:
     def _initialize_add_sample(self): #to be implemented
         sampleLabel = ttk.Label(self._frame, text="Create new sample")
 
+        self._sample_type_entry = ttk.OptionMenu(
+                self._frame,
+                self.sample_type_v,
+                *SAMPLES
+        )
+
+        self._sample_locus_entry = ttk.OptionMenu(
+                self._frame,
+                self.sample_locus_v,
+                *self.locus_ids
+        )
+
         add_sample_button = ttk.Button(
             master=self._frame,
             text="Add sample",
-            #command=self._handle_add_sample
+            command=lambda : self.add_sample()
         )
 
         sampleLabel.grid(row=9, column=2)
+        self._sample_type_entry.grid(row=10, column=1)
+        self._sample_locus_entry.grid(row=10, column=2)
         add_sample_button.grid(row=11, column=2)
+
+    def add_sample(self):
+        sample_type = self.sample_type_v.get()
+        sample_locus = int(self.sample_locus_v.get())
+
+        sample = Sample(sample_type, sample_locus)
+        create_sample(sample)
 
     def _initialize_export_button(self):
         export_filename_label = ttk.Label(master=self._frame, text="Export locus data")

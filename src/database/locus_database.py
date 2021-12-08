@@ -4,6 +4,7 @@ import sqlite3
 import csv
 from database.locus import Locus
 from database.find import Find
+from database.sample import Sample
 
 def check_db(db_name):
     ''' Tarkista onko tietokantaa olemassa ja luo sellainen jos ei ole '''
@@ -128,6 +129,26 @@ def create_find(find):
                 find.locus))
 
         print(f"Find {find.find_type} added to database")
+
+    except:
+        print("Input error in create_find")
+
+def create_sample(sample):
+    '''Funktio luo näyte-olion ja vie sen tietokantaan'''
+    db_name = read_db_name()
+
+    current_database = sqlite3.connect(str(db_name))
+    current_database.isolation_level = None
+    cursor = current_database.cursor()
+
+    print("Creating sample", sample.sample_type)
+    try:
+        cursor.execute("INSERT INTO Finds (sample_type, locus) \
+            VALUES(?,?)", (
+                sample.sample_type,
+                sample.sample_locus))
+
+        print(f"Find {sample.sample_type} added to database")
 
     except:
         print("Input error in create_find")
