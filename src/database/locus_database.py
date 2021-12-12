@@ -109,6 +109,18 @@ def fetch_finds():
     rows = (cursor.fetchall())
     return rows
 
+def fetch_samples():
+    '''Hae näytteet'''
+    db_name = read_db_name
+
+    current_database = sqlite3.connect(str(db_name))
+    current_database.isolation_level = None
+    cursor = current_database.cursor()
+
+    cursor.execute("SELECT * FROM Samples")
+    rows = (cursor.fetchall())
+    return rows
+
 def create_find(find):
     ''' Funktio luo löytö-olion ja vie sen tietokantaan'''
 
@@ -154,10 +166,24 @@ def create_sample(sample):
         print("Input error in create_find")
 
 def export_data(filename):
-    with open(f"{filename}.csv", "w") as file:
+    with open(f"{filename}_stratigraphy.csv", "w") as file:
         writer = csv.writer(file)
-        writer.writerow(["Type", "Name", "Description", "Thickness", "Above"])
+        writer.writerow(["Id","Type", "Name", "Description", "Thickness", "Above"])
         rows = fetch_loci()
+        writer.writerows(rows)
+        print("Export locus data performed")
+    
+    with open(f"{filename}_finds.csv", "w") as file:
+        writer = csv.writer(file)
+        writer.writerow(["Id","Find type", "Dating", "Description", "Weight", "Locus"])
+        rows = fetch_finds()
+        writer.writerows(rows)
+        print("Export data performed")
+
+    with open(f"{filename}_samples.csv", "w") as file:
+        writer = csv.writer(file)
+        writer.writerow(["Id","Sample type", "Locus"])
+        rows = fetch_samples()
         writer.writerows(rows)
         print("Export data performed")
         
