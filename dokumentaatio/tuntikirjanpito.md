@@ -20,4 +20,5 @@
 | 5.12.  | 2		 | jatkettu relaatioiden lisäämistä |
 | 6.12.  | 5		 | muokattu asettelua, korjattu pylint-virheitä |
 | 8.12.  | 1    	 | aloitettu sample-valikon tekeminen |
-| Yht.   | 42		 |  | 
+| 12.12. | 1 		 | korjattu ja rikottu export-toimintoa |
+| Yht.   | 43		 |  | 
