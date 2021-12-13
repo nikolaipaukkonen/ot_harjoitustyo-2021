@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa projektin viimeisin release OHJE
+Lataa projektin viimeisin [release](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/releases/tag/viikko6)
 
 ## Ohjelman käynnistäminen
 
@@ -42,4 +42,4 @@ Lisäksi yksiköitä voidaan poistaa id-numeron perusteella.
 
 Alimpana ovat nappulat yksikkö- ja löytötaulukoiden näkymän päivittämistä varten. Switch project -nappulasta ohjelma palaa alkunäkymään, jossa voi vaihtaa projektia.
 
-KUVA
+![Käyttöliittymä](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/dokumentaatio/ui_example.png?raw=true)
