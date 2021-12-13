@@ -191,6 +191,8 @@ class MainView:
         create_sample(sample)
 
     def _initialize_remove_button(self):
+        self.remove_label = ttk.Label(master=self._frame, text="Remove locus by id")
+
         self._remove_locus_entry = ttk.OptionMenu(
             self._frame,
             self.remove_locus_v,
@@ -202,8 +204,10 @@ class MainView:
             text="Remove locus",
             command=lambda : self._remove_locus()
         )
-        self._remove_locus_entry.grid(row=16, column=1)
-        remove_locus_button.grid(row=16, column=2)
+        
+        self.remove_label.grid(row=16, column= 1)
+        self._remove_locus_entry.grid(row=16, column=2)
+        remove_locus_button.grid(row=16, column=3)
 
     def _remove_locus(self):
         remove_id = self.remove_locus_v.get()
