@@ -23,14 +23,14 @@ Alkuvaiheessa sovellus koostuu kolmesta näkymästä:
 * Luo uusi projekti, avaa projekti, poista projekti *luo / avaa toteutettu*
 * Lisää projektiin yksikkö (maa/rakenne/leikkaus, juokseva numero, maaperän kuvaus, väri, minkä alla, minkä päällä jne.) *lisäys toteutettu*
 * Muokkaa yksikköä
-* Poista yksikkö
+* Poista yksikkö *toteutettu*
 * Lisää löytö *toteutettu*
-* Lisää näyte
+* Lisää näyte *toteutettu*
 
 ### Projektin vienti ja tarkastelu
-* Projektin stratigrafisten yksiköiden tietojen listaaminen
+* Projektin stratigrafisten yksiköiden tietojen listaaminen *toteutettu*
 * Visualisointi
-* Vieminen ulos tulosteena (txt, xls tai vastaava)
+* Vieminen ulos tulosteena (txt, xls tai vastaava) *toteutettu .csv*
 
 ## Jatkokehitysideoita
 Toiminnallisuutta voidaan laajentaa graafisen käyttöliittymän monimutkaistamisella ja erilaisten ulkopuolisten kirjastojen käytöllä. 

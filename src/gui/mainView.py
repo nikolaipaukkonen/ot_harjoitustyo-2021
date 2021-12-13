@@ -50,6 +50,9 @@ class MainView:
         self.sample_type_v = tk.StringVar(self._root)
         self.sample_locus_v = tk.StringVar(self._root)
 
+        self._remove_locus_entry = None
+        self.remove_locus_v = tk.StringVar(self._root)
+
         self._initialize()
 
     def pack(self):
@@ -154,7 +157,7 @@ class MainView:
         self._find_locus_entry.grid(row=6, column=3)
         add_find_button.grid(row=7, column=2)
 
-    def _initialize_add_sample(self): #to be implemented
+    def _initialize_add_sample(self):
         sampleLabel = ttk.Label(self._frame, text="Create new sample")
 
         self._sample_type_entry = ttk.OptionMenu(
@@ -186,6 +189,25 @@ class MainView:
 
         sample = Sample(sample_type, sample_locus)
         create_sample(sample)
+
+    def _initialize_remove_button(self):
+        self._remove_locus_entry = ttk.OptionMenu(
+            self._frame,
+            self.remove_locus_v,
+            *self.locus_ids
+        )
+
+        remove_locus_button = ttk.Button(
+            master=self._frame,
+            text="Remove locus",
+            command=lambda : self._remove_locus()
+        )
+        self._remove_locus_entry.grid(row=16, column=1)
+        remove_locus_button.grid(row=16, column=2)
+
+    def _remove_locus(self):
+        remove_id = self.remove_locus_v.get()
+        remove_locus(remove_id)
 
     def _initialize_export_button(self):
         export_filename_label = ttk.Label(master=self._frame, text="Export locus data")
@@ -265,6 +287,7 @@ class MainView:
         add_display_finds_button.grid(row=17, column=3)
 
         self._initialize_export_button()
+        self._initialize_remove_button()
 
         add_return_button.grid(row=17, column=2)
         self.display_loci()

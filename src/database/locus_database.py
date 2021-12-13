@@ -111,7 +111,7 @@ def fetch_finds():
 
 def fetch_samples():
     '''Hae näytteet'''
-    db_name = read_db_name
+    db_name = read_db_name()
 
     current_database = sqlite3.connect(str(db_name))
     current_database.isolation_level = None
@@ -154,8 +154,9 @@ def create_sample(sample):
     cursor = current_database.cursor()
 
     print("Creating sample", sample.sample_type)
+
     try:
-        cursor.execute("INSERT INTO Finds (sample_type, locus) \
+        cursor.execute("INSERT INTO Samples (sample_type, locus) \
             VALUES(?,?)", (
                 sample.sample_type,
                 sample.sample_locus))
@@ -163,7 +164,19 @@ def create_sample(sample):
         print(f"Find {sample.sample_type} added to database")
 
     except:
-        print("Input error in create_find")
+        print("Input error in create_sample")
+
+def remove_locus(id):
+    db_name = read_db_name()
+
+    current_database = sqlite3.connect(str(db_name))
+    current_database.isolation_level = None
+    cursor = current_database.cursor()
+    print(f"Removing locus DEBUD, removing id {id}")
+    try:
+        cursor.execute(f"DELETE FROM Locus WHERE id={id}")
+    except:
+        print("Error in remove locus")
 
 def export_data(filename):
     with open(f"{filename}_stratigraphy.csv", "w") as file:
@@ -178,12 +191,12 @@ def export_data(filename):
         writer.writerow(["Id","Find type", "Dating", "Description", "Weight", "Locus"])
         rows = fetch_finds()
         writer.writerows(rows)
-        print("Export data performed")
+        print("Export find data performed")
 
     with open(f"{filename}_samples.csv", "w") as file:
         writer = csv.writer(file)
         writer.writerow(["Id","Sample type", "Locus"])
         rows = fetch_samples()
         writer.writerows(rows)
-        print("Export data performed")
+        print("Export sample data performed")
         

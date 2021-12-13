@@ -21,4 +21,5 @@
 | 6.12.  | 5		 | muokattu asettelua, korjattu pylint-virheitä |
 | 8.12.  | 1    	 | aloitettu sample-valikon tekeminen |
 | 12.12. | 1 		 | korjattu ja rikottu export-toimintoa |
-| Yht.   | 43		 |  | 
+| 13.12. | 3		 | korjattu export-toiminto ja sample |
+| Yht.   | 46		 |  | 
