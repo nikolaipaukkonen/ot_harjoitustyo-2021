@@ -23,4 +23,5 @@
 | 12.12. | 1 		 | korjattu ja rikottu export-toimintoa |
 | 13.12. | 3		 | korjattu export-toiminto ja sample |
 | 13.12. | 1 		 | testaus, tuntikirjanpito ja käyttöohje |
-| Yht.   | 47		 |  | 
+| 14.12. | 0.5		 | aloitettu docstringien teko |
+| Yht.   | 48		 |  | 
