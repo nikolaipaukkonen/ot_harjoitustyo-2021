@@ -1,9 +1,9 @@
 from tkinter import ttk, constants
 from database.locus_database import check_db
 
-#aloitusnäkymä, jossa avataan tai luodaan käytettävä tietokanta
-
 class IntroView:
+    '''Avausnäkymä, jossa valitaan tai luodaan tietokanta.'''
+
     def __init__(self, root, handle_main):
         self._root = root
         self._handle_main = handle_main

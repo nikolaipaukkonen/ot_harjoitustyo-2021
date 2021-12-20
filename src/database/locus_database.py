@@ -1,13 +1,15 @@
-''' Tietokantojen luominen ja täydentäminen, käytetään mainView.py:stä käsin '''
+''' Tietokantojen luominen ja täydentäminen, kutsutaan mainView.py:stä käsin '''
 
 import sqlite3
 import csv
-from database.locus import Locus
-from database.find import Find
-from database.sample import Sample
 
 def check_db(db_name):
-    ''' Tarkista onko tietokantaa olemassa ja luo sellainen jos ei ole '''
+    ''' Tarkistaa onko tietokantaa olemassa ja luo sellaisen, jos ei ole .
+
+    Args:
+        db_name: Käytettävän tietokannan nimi.
+
+    '''
 
     current_db = sqlite3.connect(str(db_name))
     file=open("db_list", "w+", encoding="utf-8")
@@ -17,7 +19,6 @@ def check_db(db_name):
 
     cursor.execute("PRAGMA foreign_keys = ON")
 
-    # Initialize database
     try:
         cursor.execute("CREATE TABLE Locus \
                 (id INTEGER PRIMARY KEY, \
@@ -42,17 +43,26 @@ def check_db(db_name):
 
         print(f"Database {db_name} created")
 
-    except:
+    except Exception:
         print(f"Database {db_name} exists. Opening...")
 
 def read_db_name():
-    ''' Lue tietokannan nimi "muistista" '''
+    ''' Lukee tietokannan nimen "muistista".
+
+    Returns:
+        Tietokannan nimi merkkijonona.
+    '''
+
     file = open("db_list", "r", encoding="utf-8")
     db_name = file.readline()
     return db_name
 
 def create_locus(locus):
-    ''' Funktio luo stratigrafisen yksikön (olion) ja vie sen tietokantaan '''
+    ''' Funktio luo stratigrafisen yksikön (olion) ja vie sen tietokantaan
+
+    Args:
+        locus: Stratigrafinen yksikkö, joka syötetään tietokantaan.
+    '''
 
     db_name = read_db_name()
 
@@ -76,7 +86,12 @@ def create_locus(locus):
         print("Input error in create_locus")
 
 def fetch_loci():
-    ''' Hae ja tulosta näkymään stratigrafiset yksiköt (locukset) '''
+    ''' Hae ja tulosta näkymään stratigrafiset yksiköt (locukset)
+
+    Returns:
+        Locus-taulukon sisältö riveinä.
+    '''
+
     db_name = read_db_name()
 
     current_database = sqlite3.connect(str(db_name))
@@ -89,6 +104,12 @@ def fetch_loci():
     return rows
 
 def fetch_locus_ids():
+    ''' Hakee ja palauttaa näkymään stratigrafiten yksiköiden id-numerot.
+
+    Returns:
+        Lista locusten id-numeroista.
+    '''
+
     rows = fetch_loci()
     locus_ids = []
 
@@ -98,7 +119,12 @@ def fetch_locus_ids():
     return locus_ids
 
 def fetch_finds():
-    ''' Hae ja tulosta näkymään löydöt '''
+    ''' Hakee ja palauttaa löydöt tietokannasta.
+
+    Returns:
+        Löytöjen tiedot riveittäin.
+    '''
+
     db_name = read_db_name()
 
     current_database = sqlite3.connect(str(db_name))
@@ -110,7 +136,12 @@ def fetch_finds():
     return rows
 
 def fetch_samples():
-    '''Hae näytteet'''
+    '''Hakee ja palauttaa näytteet tietokannata.
+
+    Returns:
+        Näytteiden tiedot riveinä.
+    '''
+
     db_name = read_db_name()
 
     current_database = sqlite3.connect(str(db_name))
@@ -122,7 +153,11 @@ def fetch_samples():
     return rows
 
 def create_find(find):
-    ''' Funktio luo löytö-olion ja vie sen tietokantaan'''
+    ''' Funktio luo löytö-olion ja vie sen tietokantaan.
+
+    Args:
+        find: Löytö-olio, joka viedään tietokantaan.
+    '''
 
     db_name = read_db_name()
 
@@ -146,7 +181,12 @@ def create_find(find):
         print("Input error in create_find")
 
 def create_sample(sample):
-    '''Funktio luo näyte-olion ja vie sen tietokantaan'''
+    '''Funktio luo näyte-olion ja vie sen tietokantaan.
+
+    Args:
+        sample: Näyte-olio, joka viedään tietokantaan.
+    '''
+
     db_name = read_db_name()
 
     current_database = sqlite3.connect(str(db_name))
@@ -166,37 +206,48 @@ def create_sample(sample):
     except:
         print("Input error in create_sample")
 
-def remove_locus(id):
+def remove_locus(id_no):
+    ''' Poistaa locuksen tietokannasta id:n perusteella.
+
+    Args:
+        id_no: id-numero (kokonaisluku), jonka perusteella poisto tehdään.
+    '''
+
     db_name = read_db_name()
 
     current_database = sqlite3.connect(str(db_name))
     current_database.isolation_level = None
     cursor = current_database.cursor()
-    print(f"Removing locus DEBUD, removing id {id}")
+    print(f"Removing locus DEBUD, removing id {id_no}")
     try:
-        cursor.execute(f"DELETE FROM Locus WHERE id={id}")
+        cursor.execute(f"DELETE FROM Locus WHERE id={id_no}")
     except:
         print("Error in remove locus")
 
 def export_data(filename):
-    with open(f"{filename}_stratigraphy.csv", "w") as file:
+    ''' Vie tietokannan kolmeksi erilliseksi csv-tiedostoksi (yksiköt, löydöt ja näytteet).
+
+    Args:
+        filename: merkkijono, joka tulee luotavien tiedostojen alkuun.
+    '''
+
+    with open(f"{filename}_stratigraphy.csv", "w", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow(["Id","Type", "Name", "Description", "Thickness", "Above"])
         rows = fetch_loci()
         writer.writerows(rows)
         print("Export locus data performed")
-    
-    with open(f"{filename}_finds.csv", "w") as file:
+
+    with open(f"{filename}_finds.csv", "w", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow(["Id","Find type", "Dating", "Description", "Weight", "Locus"])
         rows = fetch_finds()
         writer.writerows(rows)
         print("Export find data performed")
 
-    with open(f"{filename}_samples.csv", "w") as file:
+    with open(f"{filename}_samples.csv", "w", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow(["Id","Sample type", "Locus"])
         rows = fetch_samples()
         writer.writerows(rows)
         print("Export sample data performed")
-        

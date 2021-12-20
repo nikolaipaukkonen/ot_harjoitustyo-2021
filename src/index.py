@@ -12,8 +12,8 @@ def main():
     window.title('Stratigraphy Database Manager')
     window.geometry('1200x1000')
 
-    ui = UI(window)
-    ui.start_gui()
+    user_interface = UI(window)
+    user_interface.start_gui()
 
     window.mainloop()
 

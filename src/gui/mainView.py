@@ -7,14 +7,16 @@ from database.locus import Locus
 from database.find import Find
 from database.sample import Sample
 
-#locuksen, löydön ja näytteen tyyppivaihtoehdot options-valikkoon
+#Locuksen, löydön ja näytteen tyyppivaihtoehdot options-valikkoon
 TYPES = ["Soil", "Construction", "Cut"]
 FINDS = ["Pottery", "Lithic", "Coin", "Iron object", "Silver", \
     "Gold", "Nail", "Glass", "Bone", "Wood", "Lead"]
 SAMPLES = ["Charcoal", "Soil", "Other"]
 
 class MainView:
-    def __init__(self,root,handle_intro): #siistittävä
+    '''Käyttöliittymän päänäkymä.'''
+
+    def __init__(self,root,handle_intro):
         self._root = root
         self._handle_intro = handle_intro
 
@@ -204,10 +206,10 @@ class MainView:
             text="Remove locus",
             command=lambda : self._remove_locus()
         )
-        
-        self.remove_label.grid(row=16, column= 1)
-        self._remove_locus_entry.grid(row=16, column=2)
-        remove_locus_button.grid(row=16, column=3)
+
+        self.remove_label.grid(row=16, column= 3)
+        self._remove_locus_entry.grid(row=16, column=1)
+        remove_locus_button.grid(row=16, column=2)
 
     def _remove_locus(self):
         remove_id = self.remove_locus_v.get()
