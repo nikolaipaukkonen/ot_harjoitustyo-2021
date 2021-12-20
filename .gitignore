@@ -7,6 +7,7 @@
 *.db
 *.pyc
 *.csv
+.coveragerc
 /src/__pycache__/
 /src/tests/__pycache__/
 /src/tests/.pytest_cache/
