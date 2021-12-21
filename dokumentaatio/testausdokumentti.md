@@ -22,7 +22,7 @@ Manuaalista testausta on suoritettu ohjelmalle eri kehitysvaiheissa.
 
 ### Asennus
 
-Sovellus on haettu ja sitä on testattu erilaisissa Linux-ympäristöissä. 
+Sovellus on haettu ja sitä on testattu erilaisissa Linux-ympäristöissä, mm. Cubblilla ja Manjarolla. 
 
 ### Toiminnallisuudet
 
