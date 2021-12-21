@@ -38,7 +38,7 @@ def check_db(db_name):
         cursor.execute(
             "CREATE TABLE Samples \
             (id INTEGER PRIMARY KEY, \
-            sample_type TEXT UNIQUE, \
+            sample_type TEXT, \
             locus INTEGER REFERENCES Locus)")
 
         print(f"Database {db_name} created")
@@ -201,7 +201,7 @@ def create_sample(sample):
                 sample.sample_type,
                 sample.sample_locus))
 
-        print(f"Find {sample.sample_type} added to database")
+        print(f"Sample of type {sample.sample_type} added to database")
 
     except:
         print("Input error in create_sample")
@@ -218,7 +218,7 @@ def remove_locus(id_no):
     current_database = sqlite3.connect(str(db_name))
     current_database.isolation_level = None
     cursor = current_database.cursor()
-    print(f"Removing locus DEBUD, removing id {id_no}")
+    
     try:
         cursor.execute(f"DELETE FROM Locus WHERE id={id_no}")
     except:

@@ -3,9 +3,10 @@
 import unittest
 import os
 from pathlib import Path
-from database.locus_database import check_db,create_find,fetch_locus_ids,fetch_finds,fetch_loci,create_locus
+from database.locus_database import *
 from database.locus import Locus
 from database.find import Find
+from database.sample import Sample
 
 
 class TestLocus_database(unittest.TestCase):
@@ -53,6 +54,23 @@ class TestLocus_database(unittest.TestCase):
         rows = fetch_loci()
         self.assertEqual(len(rows), 100)
 
+    def test_create_sample(self):
+        check_db(self.db_name)
+        sample = Sample("Soil", 1)
+        create_sample(sample)
+
+        rows = fetch_samples()
+        self.assertEqual(rows[0][1], "Soil")
+
+    def test_create_100_samples(self):
+        check_db(self.db_name)
+        for _ in range(100):
+            sample = Sample("Soil", 1)
+            create_sample(sample)
+
+        rows = fetch_samples()
+        self.assertEqual(len(rows), 100)
+
     def test_read_db_name(self):
         file = open("db_list", "w+", encoding="utf-8")
         check_db(self.db_name)
@@ -66,3 +84,22 @@ class TestLocus_database(unittest.TestCase):
         create_locus(locus)
         test_ids = fetch_locus_ids()
         self.assertEqual(1, test_ids[0])
+
+    def test_remove_locus(self):
+        check_db(self.db_name)
+
+        remove_locus(1)
+
+        rows = fetch_loci()
+        self.assertEqual(100, len(rows))
+
+    def test_export_data_creates_stratigraphy_file(self):
+        check_db(self.db_name)
+        export_data(self.db_name)
+        path_strat = Path(f'./{self.db_name}_stratigraphy.csv')
+        path_finds = Path(f'./{self.db_name}_finds.csv')
+        path_samples = Path(f'./{self.db_name}_samples.csv')
+        assert path_strat.is_file()
+        os.remove(path_strat)
+        os.remove(path_finds)
+        os.remove(path_samples)

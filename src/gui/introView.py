@@ -24,7 +24,6 @@ class IntroView:
             master=self._frame,
             text="Create or open existing stratigraphical database")
 
-        #tietokannan luominen/avaaminen
         self._entry = ttk.Entry(master=self._frame)
 
         button = ttk.Button(
@@ -47,6 +46,8 @@ class IntroView:
             check_db(db_name)
             self._handle_main()
         else:
-            errorLabel = ttk.Label(master=self._frame, text="Database name can't be left empty")
+            errorLabel = ttk.Label(
+                master=self._frame,
+                text="Database name can't be left empty")
             errorLabel.pack()
         
