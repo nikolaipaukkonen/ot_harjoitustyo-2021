@@ -12,7 +12,7 @@ Keskeisintä `locus_database` -luokkaa testataan `locus_database_test`-testiluok
 
 Testauskattavuus on 95%.
 
-![Testauskattavuus]()
+![](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/dokumentaatio/testikattavuus.png?raw=true)
 
 Graafisen käyttöliittymän osat jäivät testaamisen ulkopuolelle. Myös joitakin poikkeuksia yms. on testaamatta. 
 
