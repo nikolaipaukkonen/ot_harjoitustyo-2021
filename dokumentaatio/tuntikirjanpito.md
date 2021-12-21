@@ -25,4 +25,5 @@
 | 13.12. | 1 		 | testaus, tuntikirjanpito ja käyttöohje |
 | 14.12. | 0.5		 | aloitettu docstringien teko |
 | 20.12. | 3		 | korjailua ja docstringien kirjoittamista |
-| Yht.   | 51		 |  | 
+| 21.12. | 4     | dokumentaatio + testikattavuus |
+| Yht.   | 55 	 |  | 
