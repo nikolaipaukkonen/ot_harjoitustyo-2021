@@ -13,7 +13,7 @@ Ensimmäinen release: [Viikko 5 deadline](https://github.com/nikolaipaukkonen/ot
 Ohjelma on kehitetty Pythonin versiolla 3.8.10.
 
 ## Dokumentaatio
-* Käyttöohje
+* [Käyttöohje](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/dokumentaatio/kayttoohje.md#k%C3%A4ytt%C3%B6ohje)
 * [Vaatimusmäärittely](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/dokumentaatio/vaatimusmaarittely.md)
 * [Arkkitehtuurikuvaus](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/blob/main/dokumentaatio/arkkitehtuurikuvaus.md)
 * Testausdokumentti
