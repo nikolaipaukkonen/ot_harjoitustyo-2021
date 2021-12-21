@@ -1,4 +1,3 @@
-from tkinter import Tk
 from gui.introView import IntroView
 from gui.mainView import MainView
 

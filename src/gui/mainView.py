@@ -1,8 +1,8 @@
 ''' Päänäkymä, jossa syötetään tietoja eri taulukoihin '''
 
 import tkinter as tk
-from tkinter import ttk, constants, StringVar
-from database.locus_database import *
+from tkinter import ttk, constants
+from database.locus_database import remove_locus,fetch_locus_ids,fetch_loci,fetch_finds,create_sample,create_locus,create_find,export_data
 from database.locus import Locus
 from database.find import Find
 from database.sample import Sample
@@ -64,6 +64,8 @@ class MainView:
         self._frame.destroy()
 
     def add_locus(self):
+        ''' Luodaan Locus-luokan olio ja viedään se tietokantaan'''
+
         type_value = self.type_v.get()
         name_value = self._name_entry.get()
         descr = self._descr_entry.get()
@@ -76,6 +78,8 @@ class MainView:
         self.locus_ids = fetch_locus_ids()
 
     def add_find(self):
+        '''Luodaan Find-luokan olio ja viedään se tietokantaan'''
+
         find_type = self.find_type_v.get()
         dating = self._find_dating_entry.get()
         descr = self._find_descr_entry.get()
@@ -86,6 +90,8 @@ class MainView:
         create_find(find)
 
     def _initialize_add_locus(self):
+        '''Alustetaan yksikön luontiin liittyvät elementit'''
+
         self.locus_ids = fetch_locus_ids()
 
         locusLabel = ttk.Label(self._frame, text="Create new locus")
@@ -125,6 +131,8 @@ class MainView:
         add_locus_button.grid(row=3,column=2)
 
     def _initialize_add_find(self):
+        '''Alustetaan löydön luontiin liittyvät elementit'''
+
         findLabel = ttk.Label(self._frame, text="Create new find")
 
         self._find_type_entry = ttk.OptionMenu(self._frame,self.find_type_v, FINDS[0],*FINDS)
@@ -160,6 +168,8 @@ class MainView:
         add_find_button.grid(row=7, column=2)
 
     def _initialize_add_sample(self):
+        '''Alustetaan näytteen luomiseen liittyvät elementit'''
+
         sampleLabel = ttk.Label(self._frame, text="Create new sample")
 
         self._sample_type_entry = ttk.OptionMenu(
@@ -186,6 +196,7 @@ class MainView:
         add_sample_button.grid(row=11, column=2)
 
     def add_sample(self):
+        ''' Luodaan Sample-luokan olio ja viedään se tietokantaan'''
         sample_type = self.sample_type_v.get()
         sample_locus = int(self.sample_locus_v.get())
 
@@ -193,6 +204,7 @@ class MainView:
         create_sample(sample)
 
     def _initialize_remove_button(self):
+        '''Alustetaan yksikön poistoon liittyvät elementit'''
         self.remove_label = ttk.Label(master=self._frame, text="Remove locus by id")
 
         self._remove_locus_entry = ttk.OptionMenu(
@@ -212,10 +224,14 @@ class MainView:
         remove_locus_button.grid(row=16, column=2)
 
     def _remove_locus(self):
+        '''Poistaa locuksen id:n perusteella'''
+
         remove_id = self.remove_locus_v.get()
         remove_locus(remove_id)
 
     def _initialize_export_button(self):
+        '''Alustaa datan vientinappulan'''
+
         export_filename_label = ttk.Label(master=self._frame, text="Export locus data")
         self.export_filename = ttk.Entry(master=self._frame)
         self.export_filename.insert(0, "Enter filename")
@@ -258,10 +274,14 @@ class MainView:
             i += 1
 
     def handle_export(self):
+        '''Datan viennin käsittelijä'''
+
         filename = self.export_filename.get()
         export_data(filename)
 
     def _initialize(self):
+        '''Alustetaan näkymä'''
+
         self._frame = ttk.Frame(self._root)
         label = ttk.Label(self._frame, text="Select action", font="Helvetica 15 bold")
 

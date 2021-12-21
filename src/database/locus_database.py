@@ -82,7 +82,7 @@ def create_locus(locus):
 
         print(f"Locus {locus.name} added to database")
 
-    except:
+    except ValueError:
         print("Input error in create_locus")
 
 def fetch_loci():
@@ -177,7 +177,7 @@ def create_find(find):
 
         print(f"Find {find.find_type} added to database")
 
-    except:
+    except ValueError:
         print("Input error in create_find")
 
 def create_sample(sample):
@@ -203,7 +203,7 @@ def create_sample(sample):
 
         print(f"Sample of type {sample.sample_type} added to database")
 
-    except:
+    except ValueError:
         print("Input error in create_sample")
 
 def remove_locus(id_no):
@@ -218,10 +218,10 @@ def remove_locus(id_no):
     current_database = sqlite3.connect(str(db_name))
     current_database.isolation_level = None
     cursor = current_database.cursor()
-    
+
     try:
         cursor.execute(f"DELETE FROM Locus WHERE id={id_no}")
-    except:
+    except ValueError:
         print("Error in remove locus")
 
 def export_data(filename):
