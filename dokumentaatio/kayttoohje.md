@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa projektin viimeisin [release](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/releases/tag/viikko6)
+Lataa projektin viimeisin [release](https://github.com/nikolaipaukkonen/ot_harjoitustyo-2021/releases/tag/loppupalautus)
 
 ## Ohjelman käynnistäminen
 
